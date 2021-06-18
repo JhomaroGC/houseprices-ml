@@ -39,12 +39,14 @@ class PriceHousesData():
         df_isnull.to_csv(".\outputs\\dataset_missing_values(after).txt")
         data = _change_typologies(data)        
         data = _encoding(data)
+        #Separating features and object variable
         X = data.drop(['SalePrice'], axis = 1)
         y = data['SalePrice']
+        #Split train and test sets, acording to competition
         X_train = X[:1460]
         X_test =X[1460:] 
         y_train = y[:1460]
-        return X_train, X_test, y_train
+        return X_train, X_test, y_train, df_[['Id']]
 
     #Processing train dataset, return a new dataset
     def preprocessing_train_df(self):
@@ -75,7 +77,6 @@ def _load_read_data(path, train, test):
     with ZipFile(path) as myzip:
         df = pd.read_csv(myzip.open(train))
         df_ = pd.read_csv(myzip.open(test))
-    # data = pd.concat([df,df_], axis = 1)
     return df, df_
 
 def _fill_missing_values_train_df(data):
