@@ -1,4 +1,5 @@
 from data import PriceHousesData
 
-data = PriceHousesData("data\house-prices-advanced-regression-techniques.zip")
-data = data.preprocessing()
+X, y = PriceHousesData("data\house-prices-advanced-regression-techniques.zip", "train.csv", "test.csv").preprocessing_all_data()
+
+print(X, y)

@@ -1,5 +1,5 @@
 ,0
-MSSubClass,0
+SalePrice,1459
 MSZoning,0
 GarageYrBlt,0
 GarageType,0
