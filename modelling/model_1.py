@@ -31,3 +31,13 @@ def save_submission():
     sub[['SalePrice']].to_csv("outputs\\my_submission.csv")
     print("Predicción guardada exitosamente, lista para envío: \n")
     return sub[["SalePrice"]]
+
+def save_submission_2():
+    test = pd.read_csv("data\\test.csv")
+    preds = pd.read_csv("outputs\\predsxgboost.csv")
+    submission = pd.concat([test['Id'], preds], axis = 1)
+    sub = pd.DataFrame(submission.values, columns = ['Id', 'Id_', 'SalePrice'])
+    sub = sub.set_index("Id")
+    sub[['SalePrice']].to_csv("outputs\\my_submission.csv")
+    print("Predicción guardada exitosamente, lista para envío: \n")
+    return sub[["SalePrice"]]
